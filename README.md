@@ -1,6 +1,6 @@
 ### Курсовая работа по дисциплине "Компьютерные сети".
 
-#### *Тема: Разработать Website для отслеживания погоды с использованием протокола [WebSocket](https://ru.wikipedia.org/wiki/WebSocket).*
+#### *Тема: Разработка Website для отслеживания погоды с использованием протокола [WebSocket](https://ru.wikipedia.org/wiki/WebSocket).*
 <br></br>
 #### 1: **Используемые технологии:**
 - [Python 3.10](https://ru.wikipedia.org/wiki/Python)
