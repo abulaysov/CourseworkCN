@@ -1,0 +1,50 @@
+.cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+	grid-gap: 1vw;
+	grid-auto-rows: 30vw;
+	margin-bottom: 2vw;
+	justify-content: center;
+	background: steelblue;
+	border-radius: 20px;
+	margin-left: 35%;
+	width: 30%;
+	top: 20%;
+	position: absolute;
+}
+
+html, body {
+	min-height: 100vh;
+	background: linear-gradient(#836273, #373252);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	padding: 0;
+	margin: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+input {
+	border: none;
+	outline: none;
+	height: 3vw;
+	width: 40vw;
+	padding-left: 0.5vw;
+	box-shadow: 0 0 1vw rgba(0,0,0,0.5);
+}
+
+.submit-button {
+	height: 3vw;
+	width: 30%;
+	border: none;
+	outline: none !important;
+	background-color: #373252;
+	color: white;
+	box-shadow: 0 0 1vw rgba(0,0,0,0.5);
+	margin-left: 35%;
+	bottom: 20%;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	position: absolute;
+}
+
+
