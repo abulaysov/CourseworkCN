@@ -1,3 +1,8 @@
+"""
+Конфигурации для клиента
+"""
+
+
 from flask import Flask
 import os
 

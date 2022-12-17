@@ -8,14 +8,16 @@ document.addEventListener('DOMContentLoaded', function () {
     let wind_deg = document.getElementById('wind_deg');
     let humidity = document.getElementById('humidity');
     let last_update = document.getElementById('last_update');
+    let city_name = document.getElementById('city_name');
 
-    const websocketClient = new WebSocket("ws://localhost:8001")
+    const websocketClient = new WebSocket("ws://172.20.10.2:8001")
 
     websocketClient.onopen = () => {
         websocketClient.send("Hello")
 
         sendButton.onclick = () => {
-            websocketClient.send("Click")
+            websocketClient.send(city_name.value)
+            city_name.value = ""
         };
 
         websocketClient.onmessage = (message) => {

@@ -2,7 +2,11 @@ import geocoder
 
 
 class Location:
+    """Класс используется для получения текущей геопозиции клиента"""
+
     def __init__(self, loc='me'):
+        """_request_geo - атрибут для получения данных о клиенте
+           _current_get - атрибут для получения json формата данных о клиенте"""
         self._request_geo = geocoder.ip(loc)
         self._current_geo = self._request_geo.geojson
 
