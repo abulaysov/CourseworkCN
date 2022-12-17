@@ -37,9 +37,10 @@ input {
 	width: 30%;
 	border: none;
 	outline: none !important;
-	background-color: #373252;
-	color: white;
+	/*background-color: #373252;*/
+	color: black;
 	box-shadow: 0 0 1vw rgba(0,0,0,0.5);
+
 	margin-left: 35%;
 	bottom: 20%;
 	border-bottom-right-radius: 5px;
@@ -47,4 +48,66 @@ input {
 	position: absolute;
 }
 
+.weather_data_name{
+	margin-left: 10%;
+	width: max-content;
+	height: min-content;
+	position: relative;
+}
+
+.weather_data_temp{
+	margin-left: 3%;
+	width: max-content;
+	height: min-content;
+	top: 10%;
+	position: absolute;
+}
+
+.weather_data_weather{
+	margin-left: 3%;
+	width: max-content;
+	height: min-content;
+	top: 20%;
+	position: absolute;
+}
+
+.weather_data_wind_speed{
+	margin-left: 3%;
+	width: max-content;
+	height: min-content;
+	top: 30%;
+	position: absolute;
+}
+
+.weather_data_wind_deg{
+	margin-left: 3%;
+	width: max-content;
+	height: min-content;
+	top: 40%;
+	position: absolute;
+}
+
+.weather_data_humidity{
+	margin-left: 3%;
+	width: max-content;
+	height: min-content;
+	top: 50%;
+	position: absolute;
+}
+
+.weather_data_humidity{
+	margin-left: 3%;
+	width: max-content;
+	height: min-content;
+	top: 50%;
+	position: absolute;
+}
+
+.weather_last_update{
+	margin-left: 3%;
+	width: max-content;
+	height: min-content;
+	top: 70%;
+	position: absolute;
+}
 

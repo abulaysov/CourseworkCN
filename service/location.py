@@ -11,7 +11,7 @@ class Location:
         address = address[0]['properties']['address']
         return address
 
-    def get_city(self):
+    def get_city_name(self):
         city = self._current_geo['features']
         city = city[0]['properties']['city']
         return city
@@ -40,6 +40,3 @@ class Location:
         timezone = self._current_geo['features']
         timezone = timezone[0]['properties']['raw']['timezone']
         return timezone
-
-
-print(Location().get_city())

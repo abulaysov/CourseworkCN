@@ -1,5 +1,6 @@
 import requests
 import dataclasses
+from datetime import datetime
 
 
 @dataclasses.dataclass
@@ -9,6 +10,10 @@ class WeatherData:
     lon: float
     temp: float
     weather: str
+    wind_speed: float
+    wind_deg: float
+    humidity: float
+    last_update: str
 
     def to_dict(self):
         return dataclasses.asdict(self)
@@ -38,12 +43,16 @@ class Weather:
             lat=data['coord']['lat'],
             lon=data['coord']['lon'],
             temp=data['main']['temp'],
-            weather=data['weather'][0]['main']
+            weather=data['weather'][0]['main'],
+            wind_speed=data['wind']['speed'],
+            wind_deg=data['wind']['deg'],
+            humidity=data['main']['humidity'],
+            last_update=str(datetime.now())[:19]
         )
         return data
 
     @classmethod
-    def get_weather(cls, city_name: str):
+    def get_weather(cls, city_name: str) -> WeatherData:
         weather_data = cls._get_response(city_name)
         response = cls._make_response(weather_data)
         return response
