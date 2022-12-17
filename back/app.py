@@ -15,11 +15,12 @@ class WebSocket:
 
     @classmethod
     async def set_city_name(cls, ws, message):
+        """Метод для установки города клиенту"""
         cls._clients[ws] = {'loc': message}
 
     @classmethod
     async def set_current_city_name(cls, ws):
-        print(cls._clients)
+        """Метод устанавливает название города клиенту, если он не указывал название города"""
         if cls._clients.get(ws) and cls._clients.get(ws).get('loc'):
             return
         cls._clients[ws] = {'loc': location.Location().get_city_name()}
@@ -30,29 +31,31 @@ class WebSocket:
         while True:
             try:
                 message = await websocket.recv()  # Прослушиваем запрос от клиента
-                if bool(message) and message != 'Hello':
+                if bool(message) and message != 'Hello':  # Если пользователь ввел название города
                     await cls.set_city_name(websocket, message)
-                elif not bool(message) or message == 'Hello':
+                elif not bool(message) or message == 'Hello':  # Если пользователь не ввел название города
                     await cls.set_current_city_name(websocket)
 
                 data = weather.Weather.get_weather(cls._clients[websocket]['loc'])
-                cls._clients[websocket]['data'] = data  # Сохраняем клиента в атрибуте _clients
+                cls._clients[websocket]['data'] = data  # Сохраняем данные о погоде клиента в атрибуте _clients
                 await websocket.send(make_response(data))  # Отправляем к клиенту данные о погоде
-                print(cls._clients)
 
             except (websockets.ConnectionClosedOK, ValueError):  # В случае если клиент был отключен
                 break
 
-
     @classmethod
     async def run_server(cls):
-        """Метод для запуска сервера"""
+        """Метод для запуска сервера
+        Метод websockets.serve принимает 3 аргумента:
+            1. cls.handler - это обработчик запросов
+            2. 0.0.0.0 - адрес сервера
+            3. 8001 - порт сервера"""
         async with websockets.serve(cls.handler, "0.0.0.0", 8001):
             await asyncio.Future()  # run forever
 
     @classmethod
     async def job(cls):
-        """Job'а для выполнения определенной работы:
+        """Метод "Job" для выполнения определенной работы:
             Обновлять каждые 30 сек. данные о погоде без взаимодействия пользователя"""
         for ws in cls._clients:
             data = weather.Weather.get_weather(cls._clients[ws]['loc'])
