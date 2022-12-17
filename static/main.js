@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let last_update = document.getElementById('last_update');
     let city_name = document.getElementById('city_name');
 
-    const websocketClient = new WebSocket("ws://172.20.10.2:8001")
+    const websocketClient = new WebSocket("ws://192.168.1.123:8001")  // TODO: It's the WS address
 
     websocketClient.onopen = () => {
         websocketClient.send("Hello")
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
             name.innetHTML = '<p>data.name</p>'
 
             if (typeof temp.textContent !== "undefined") {
-                temp.textContent = `Temp: ${data.temp}`;
+                temp.textContent = `Temp: ${data.temp}°C`;
             } else {
                 temp.innerText = 'an error has occurred';
             }
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             wind_speed.innetHTML = '<p>data.wind_speed</p>'
 
             if (typeof wind_deg.textContent !== "undefined") {
-                wind_deg.textContent = `Wind deg: ${data.wind_deg}`;
+                wind_deg.textContent = `Wind deg: ${data.wind_deg}°`;
             } else {
                 wind_deg.innerText = 'an error has occurred';
             }

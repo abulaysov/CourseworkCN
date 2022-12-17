@@ -111,3 +111,9 @@ input {
 	position: absolute;
 }
 
+#city_name{
+	position: fixed;
+	bottom: 13%;
+	left: 36%;
+	width: 27%;
+}

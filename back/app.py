@@ -57,15 +57,17 @@ class WebSocket:
     async def job(cls):
         """Метод "Job" для выполнения определенной работы:
             Обновлять каждые 30 сек. данные о погоде без взаимодействия пользователя"""
+        tmp = []
         for ws in cls._clients:
             data = weather.Weather.get_weather(cls._clients[ws]['loc'])
             cls._clients[ws]['data'] = data
             try:
                 await ws.send(make_response(data))
             except websockets.ConnectionClosedOK:
-                cls._clients.pop(ws)
+                tmp.append(ws)
             await asyncio.sleep(1)
-
+        for client in tmp:
+            cls._clients.pop(client)
     @classmethod
     async def scheduler(cls):
         """Метод управляющая Job'ой"""
